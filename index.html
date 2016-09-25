@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="Todo">
+
+<head>
+    <title>Todo</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body ng-controller="TodoCtrl" ng-click="loadOriginal()">
+    <div class="page-container">
+        <h2>Todo</h2>
+        <h3>{{todos.length}} tasks are pending</h3>
+        <ul class="add-todo" ng-repeat="todo in todos track by $index">
+            <li ng-click="loadInput(todo,$index)">
+                <input type="text" id="text" class="txt" placeholder="New Todo" ng-model="todo.name" ng-keyup="done($event, todo)" />
+                <button class="bt bt-achieve" ng-click="done($event, todo)">{{todo.action}}</button>
+            </li>
+        </ul>
+        <h3>Add a task</h3>
+        <ul class="add-todo">
+            <li ng-click="loadInput(todo,$index)">
+                <input type="text" class="txt" placeholder="New Todo" ng-model="newTodo.name" ng-keyup="add($event)" />
+                <button class="bt bt-achieve" ng-click="add($event)">Add</button>
+            </li>
+        </ul>
+    </div>
+    <script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
